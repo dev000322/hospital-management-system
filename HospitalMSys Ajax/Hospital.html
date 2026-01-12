@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <img src="hospital-logo.png" class="logo" alt="Hospital Logo">
+<h2>Hospital Management System</h2>
+
+    <h2>Hospital Management</h2>
+
+    <form id="patientForm">
+        <input type="text" id="pname" placeholder="Patient Name" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <input type="text" id="disease" placeholder="Disease" required>
+        <button type="submit">Add Patient</button>
+    </form>
+
+    <h3>Patient Records</h3>
+    <ul id="patientList"></ul>
+</div>
+
+<script>
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+document.getElementById("patientForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+    patients.push({
+        name: pname.value,
+        age: age.value,
+        disease: disease.value
+    });
+
+    localStorage.setItem("patients", JSON.stringify(patients));
+    displayPatients();
+    this.reset();
+});
+
+function displayPatients(){
+    let patients = JSON.parse(localStorage.getItem("patients")) || [];
+    patientList.innerHTML = "";
+
+    patients.forEach(p => {
+        patientList.innerHTML += `<li>${p.name} | ${p.age} | ${p.disease}</li>`;
+    });
+}
+
+displayPatients();
+</script>
+
+</body>
+</html>
