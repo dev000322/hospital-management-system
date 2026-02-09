@@ -1,13 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myapp</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HMS - Patient Registration</title>
+  <link rel="stylesheet" href="style.css">
+
+  
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- LEFT MOST PANEL -->
+    <div class="sidePanel">
+      <div class="brand">
+        <div class="brandIcon">+</div>
+        <div>
+          <p class="brandTitle">Hospital Management System</p>
+          <p class="brandSub">Patient registration portal with validation and event handling.</p>
+        </div>
+      </div>
+
+      <div class="miniCards">
+        <div class="miniCard">✔ Username: Alphanumeric validation</div>
+        <div class="miniCard">✔ Email: Format validation</div>
+        <div class="miniCard">✔ Mobile: 10 digits validation</div>
+        <div class="miniCard">✔ Events: click, blur, focus, hover, keypress</div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="formArea">
+      <div class="topBar">
+        <h2>Patient Registration</h2>
+        <div class="statusBadge" id="statusBadge">READY</div>
+      </div>
+
+      <form id="regForm" autocomplete="off">
+        <div class="grid">
+
+          <div class="field">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="ex: Ayush123" />
+            <div class="msg error" id="userMsg"></div>
+          </div>
+
+          <div class="field">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Minimum 6 characters" />
+            <div class="msg error" id="passMsg"></div>
+          </div>
+
+          <div class="field">
+            <label>Mobile Number</label>
+            <input type="text" id="mobile" maxlength="10" placeholder="10-digit number" />
+            <div class="msg error" id="mobileMsg"></div>
+          </div>
+
+          <div class="field">
+            <label>Email</label>
+            <input type="text" id="email" placeholder="example@gmail.com" />
+            <div class="msg error" id="emailMsg"></div>
+          </div>
+
+          <div class="field">
+            <label>Department</label>
+            <select id="department">
+              <option value="">-- Select Department --</option>
+              <option>General Medicine</option>
+              <option>Cardiology</option>
+              <option>Orthopedics</option>
+              <option>Dermatology</option>
+              <option>Pediatrics</option>
+              <option>ENT</option>
+            </select>
+            <div class="msg error" id="deptMsg"></div>
+          </div>
+
+          <div class="field">
+            <label>Blood Group</label>
+            <select id="blood">
+              <option value="">-- Select Blood Group --</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>O+</option>
+              <option>O-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+            </select>
+            <div class="msg error" id="bloodMsg"></div>
+          </div>
+
+          <div class="field full">
+            <label>Address</label>
+            <textarea id="address" placeholder="Enter patient address"></textarea>
+            <div class="msg error" id="addressMsg"></div>
+          </div>
+
+          <div class="field full">
+            <label>Gender</label>
+            <div class="rowInline">
+              <label class="chip"><input type="radio" name="gender" value="Male" /> Male</label>
+              <label class="chip"><input type="radio" name="gender" value="Female" /> Female</label>
+              <label class="chip"><input type="radio" name="gender" value="Other" /> Other</label>
+            </div>
+            <div class="msg error" id="genderMsg"></div>
+          </div>
+
+          <div class="field full">
+            <label>Required Services</label>
+            <div class="rowInline">
+              <label class="chip"><input type="checkbox" id="srv1" value="OPD" /> OPD</label>
+              <label class="chip"><input type="checkbox" id="srv2" value="Emergency" /> Emergency</label>
+              <label class="chip"><input type="checkbox" id="srv3" value="Lab Tests" /> Lab Tests</label>
+            </div>
+            <div class="msg error" id="serviceMsg"></div>
+          </div>
+
+          <div class="field full">
+            <label class="chip">
+              <input type="checkbox" id="terms" />
+              I agree to hospital policies
+            </label>
+            <div class="msg error" id="termsMsg"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btnPrimary" id="registerBtn">Register</button>
+          <button type="button" class="btn btnSecondary" id="resetBtn">Clear</button>
+        </div>
+
+        <div class="hoverZone" id="hoverZone">
+          Hover here (Mouse Over In / Out)
+        </div>
+
+        <div class="finalBox" id="finalMsg">
+          Submit the form to see output.
+        </div>
+      </form>
+    </div>
+  </div>
+<script src="script.js"></script>
+  
+</body>
 </html>
